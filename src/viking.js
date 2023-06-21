@@ -60,4 +60,39 @@ class War {
     addSaxon(saxon){
         this.saxonArmy.push(saxon)
     }
+
+    vikingAttack(){
+
+        let vikingIndex =  Math.floor( Math.random() * this.vikingArmy.length)
+        let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+
+        let viking = this.vikingArmy[vikingIndex]
+        let saxon = this.saxonArmy[saxonIndex]
+
+        const result = saxon.receiveDamage(viking.strength)
+
+         if(saxon.health <= 0){
+            this.saxonArmy.splice(saxonIndex,1)
+
+        }
+        return result
+    }
+
+
+    saxonAttack(){
+
+        let vikingIndex =  Math.floor( Math.random() * this.vikingArmy.length)
+        let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+
+        let viking = this.vikingArmy[vikingIndex]
+        let saxon = this.saxonArmy[saxonIndex]
+
+        const result = viking.receiveDamage(saxon.strength)
+
+        if(viking.health <= 0){
+            this.vikingArmy.splice(vikingIndex,1)
+        }
+        return result
+
+    }
  }
